@@ -8,7 +8,7 @@ export interface TNewOrderState {
   orderError: string | undefined;
 }
 
-const initialState: TNewOrderState = {
+export const initialState: TNewOrderState = {
   orderRequest: false,
   orderModalData: null,
   orderError: undefined
@@ -23,7 +23,7 @@ export const newOrderSlice = createSlice({
   name: 'newOrder',
   initialState,
   reducers: {
-    resetOrder: () => initialState
+    resetOrder: (state) => initialState
   },
   selectors: {
     getOrderRequest: (state) => state.orderRequest,
@@ -45,3 +45,4 @@ export const newOrderSlice = createSlice({
 });
 export const { resetOrder } = newOrderSlice.actions;
 export const { getOrderRequest, getOrderModalData } = newOrderSlice.selectors;
+export default newOrderSlice.reducer;
