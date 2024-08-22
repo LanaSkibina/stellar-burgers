@@ -1,4 +1,5 @@
 const testUrl = 'http://localhost:4000';
+const modalExampleSelector = 'Соус Spicy-X';
 
 describe('Тесты e2e для главной страницы и модального окна', function() {
     beforeEach(() => {
@@ -27,25 +28,25 @@ describe('Тесты e2e для главной страницы и модаль�
     });
     
     it('проверка открытия модального окна', function () {
-        cy.contains('Соус Spicy-X').click();
+        cy.contains(modalExampleSelector).click();
         cy.get('#modals').children().should('have.length', 2);
-        cy.get('#modals').contains('Соус Spicy-X');
+        cy.get('#modals').contains(modalExampleSelector);
     });
     
     it('проверка закрытия модального окна по кнопке', function () {
-        cy.contains('Соус Spicy-X').click();
+        cy.contains(modalExampleSelector).click();
         cy.get('#modals').find('button').click();
         cy.get('#modals').children().should('have.length', 0);
     });
     
     it('проверка закрытия модального окна по esc', function () {
-        cy.contains('Соус Spicy-X').click();
+        cy.contains(modalExampleSelector).click();
         cy.get('body').type('{esc}');
         cy.get('#modals').children().should('have.length', 0);
     });
     
     it('проверка закрытия модального окна по клику на overlay', function () {
-        cy.contains('Соус Spicy-X').click();
+        cy.contains(modalExampleSelector).click();
         cy.get('body').click('topLeft');
         cy.get('#modals').children().should('have.length', 0);
     });
